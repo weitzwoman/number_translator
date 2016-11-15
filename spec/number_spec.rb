@@ -19,6 +19,9 @@ describe("it will translate numbers from numerical value to alphabetical value")
   it ("returns an alphabetical value for a number in the thousands") do
     expect(3456.translate()).to(eq("three thousandfour hundredfiftysix"))
   end
+  # it ("returns an alphabetical value for a number in the teen-ten-thousands") do
+  #   expect(17456.translate()).to(eq("seventeen thousandfour hundredfiftysix"))
+  # end
   it ("returns an alphabetical value for a number in the ten-thousands") do
     expect(23456.translate()).to(eq("twentythree thousandfour hundredfiftysix"))
   end

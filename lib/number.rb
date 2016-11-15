@@ -1,6 +1,7 @@
 class Fixnum
   define_method(:translate) do
     ones = {
+      "0" => '',
       "1" => 'one',
       "2" => 'two',
       "3" => 'three',
@@ -12,6 +13,7 @@ class Fixnum
       "9" => 'nine',
     }
     tens = {
+      "0" => '',
       "10" => 'ten',
       "11" => 'eleven',
       "12" => 'twelve',
@@ -24,6 +26,7 @@ class Fixnum
       "19" => 'nineteen',
     }
     doubles = {
+      "0" => '',
       "2" => 'twenty',
       "3" => 'thirty',
       "4" => 'fourty',
@@ -34,6 +37,7 @@ class Fixnum
       "9" => 'ninety',
     }
     hundreds = {
+      "0" => '',
       "1" => 'one hundred',
       "2" => 'two hundred',
       "3" => 'three hundred',
@@ -45,6 +49,7 @@ class Fixnum
       "9" => 'nine hundred',
     }
     thousands = {
+      "0" => ' thousand',
       "1" => 'one thousand',
       "2" => 'two thousand',
       "3" => 'three thousand',
@@ -55,7 +60,20 @@ class Fixnum
       "8" => 'eight thousand',
       "9" => 'nine thousand',
     }
+    teen_thousands = {
+      "10" => 'ten',
+      "11" => 'eleven',
+      "12" => 'twelve',
+      "13" => 'thirteen',
+      "14" => 'fourteen',
+      "15" => 'fifteen',
+      "16" => 'sixteen',
+      "17" => 'seventeen',
+      "18" => 'eighteen',
+      "19" => 'nineteen',
+    }
     ten_thousands = {
+      "0" => '',
       "1" => 'ten',
       "2" => 'twenty',
       "3" => 'thirty',
@@ -67,6 +85,7 @@ class Fixnum
       "9" => 'ninety',
     }
     hundred_thousands = {
+      "0" => '',
       "1" => 'one hundred thousand',
       "2" => 'two hundred thousand',
       "3" => 'three hundred thousand',
@@ -77,7 +96,9 @@ class Fixnum
       "8" => 'eight hundred thousand',
       "9" => 'nine hundred thousand',
     }
+
     millions = {
+      "0" => '',
       "1" => 'one million',
       "2" => 'two million',
       "3" => 'three million',
@@ -89,6 +110,7 @@ class Fixnum
       "9" => 'nine million',
     }
     billions = {
+      "0" => '',
       "1" => 'one billion',
       "2" => 'two billion',
       "3" => 'three billion',
@@ -100,6 +122,7 @@ class Fixnum
       "9" => 'nine billion',
     }
     trillions = {
+      "0" => '',
       "1" => 'one trillion',
       "2" => 'two trillion',
       "3" => 'three trillion',
@@ -120,7 +143,6 @@ puts number
         word = ones.fetch(number)
         new_name.push(word)
       elsif self < 20 and self > 9 and i < 1
-    # I fixed it. Sorry it took forever. - James, Stay classy yo!
         word = tens.fetch(self.to_s)
         new_name.push(word)
         i += 1
@@ -148,7 +170,21 @@ puts number
         word3 = ones.fetch(numArr[i + 3])
         new_name.push(word3)
         i += 1
-      elsif self > 9999 and self < 100000 and i < 1
+      # elsif self > 9999 and self < 20000 and i < 1
+      #
+      #   if (i and i + 1) == (self < 20 and self > 9)
+      #
+      #     word = teen_thousands.fetch(self.to_s)
+      #     new_name.push(word)
+      #   end
+      #   word2 = hundreds.fetch(numArr[i + 2])
+      #   new_name.push(word2)
+      #   word3 = doubles.fetch(numArr[i + 3])
+      #   new_name.push(word3)
+      #   word4 = ones.fetch(numArr[i + 4])
+      #   new_name.push(word4)
+      #   i += 1
+      elsif self > 19999 and self < 100000 and i < 1
         word = ten_thousands.fetch(numArr[i])
         new_name.push(word)
         word1 = thousands.fetch(numArr[i + 1])
